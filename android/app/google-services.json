@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "319048828704",
+    "firebase_url": "https://fir-app-c783b-default-rtdb.firebaseio.com",
+    "project_id": "fir-app-c783b",
+    "storage_bucket": "fir-app-c783b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319048828704:android:bc390ce42f8cc4bdec3945",
+        "android_client_info": {
+          "package_name": "com.future.rider_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "319048828704-92tpsrsj4cqb6ekjlb5d6dlorvbahkgs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC869czERJloZGkq7wDFaO7SFYmWGO5o1M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "319048828704-92tpsrsj4cqb6ekjlb5d6dlorvbahkgs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
