@@ -6,6 +6,7 @@ class Assets {
   static const String fontsPoppins = 'assets/fonts/Poppins.ttf';
   static const String fontsRegular = 'assets/fonts/regular.ttf';
   static const String fontsSemiBold = 'assets/fonts/semi_bold.ttf';
+  static const String imagesCabBg = 'assets/images/cabBg.jpeg';
   static const String imagesCar = 'assets/images/car.png';
   static const String imagesCirclePin = 'assets/images/circle_pin.png';
   static const String imagesLogo = 'assets/images/logo.png';

@@ -36,17 +36,27 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+  #state manager
+  bloc: any
+  flutter_bloc: any
+  provider: any
+
   #backend
   firebase_core: any
   firebase_auth: any
   firebase_database: any
+  cloud_firestore: any
+  http: any
 
   # Widgets
   fluttertoast: any
+  equatable: any
+  sms_autofill: any
 
   # maps
   google_maps_flutter: any
   geolocator: any
+
 
 
 
