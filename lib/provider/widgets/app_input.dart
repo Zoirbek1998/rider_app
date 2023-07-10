@@ -7,6 +7,7 @@ class AppInput extends StatelessWidget {
   TextInputType textInputType;
   bool obscureText;
   TextEditingController? controller;
+  final ValueChanged<String>? onChanged;
 
   AppInput({
     super.key,
@@ -15,7 +16,8 @@ class AppInput extends StatelessWidget {
     this.marginHor = 14,
     this.textInputType = TextInputType.text,
     this.obscureText = false,
-    this.controller
+    this.controller,
+    this.onChanged
   });
 
   @override
@@ -29,6 +31,10 @@ class AppInput extends StatelessWidget {
           color: Colors.grey.withOpacity(.2),
           borderRadius: BorderRadius.circular(20)),
       child: TextFormField(
+
+        onChanged: (value){
+          onChanged?.call(value);
+        },
         controller: controller,
         obscureText: obscureText,
         keyboardType: textInputType,

@@ -9,6 +9,7 @@ import 'package:rider_app/provider/all_screens/search/search_page.dart';
 import 'package:rider_app/provider/assistant/assistant_methods.dart';
 import 'package:rider_app/provider/data_handler/app_data.dart';
 
+import '../../widgets/progress_dialog.dart';
 import '../drawer/drawer_widgets.dart';
 
 class MainScreen extends StatefulWidget {
@@ -42,7 +43,7 @@ class _MainScreenState extends State<MainScreen> {
     LatLng latLngPosition = LatLng(position.longitude, position.longitude);
 
     CameraPosition cameraPosition =
-        CameraPosition(target: latLngPosition, zoom: 14);
+        CameraPosition(target: latLngPosition, zoom: 15);
     newGoogleMapController
         ?.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
 
@@ -161,9 +162,12 @@ class _MainScreenState extends State<MainScreen> {
                         height: 20,
                       ),
                       GestureDetector(
-                        onTap: (){
-                          Navigator.pushNamed(context, SearchPage.routeName);
+                        onTap: () async{
+                         var res =  Navigator.pushNamed(context, SearchPage.routeName);
 
+                         if(res =="obtainDirection"){
+                           await getPlaceDirection();
+                         }
                         },
                         child: Container(
                           padding: EdgeInsets.all(6),
@@ -232,7 +236,7 @@ class _MainScreenState extends State<MainScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      const DviderWidget(),
+                      const DividerWidget(),
                       const SizedBox(
                         height: 16,
                       ),
@@ -269,5 +273,28 @@ class _MainScreenState extends State<MainScreen> {
       ),
       drawer: const DrawerWidget(),
     );
+  }
+
+  Future<void> getPlaceDirection()async {
+    var initialPos =
+        Provider.of<AppData>(context, listen: false).pickUpLocation;
+    var finalPos = Provider.of<AppData>(context, listen: false).dropOffLocation;
+
+    var pickUpLatLng =
+        LatLng(initialPos?.latitude ?? 0.0, initialPos?.longitude ?? 0.0);
+
+    var dropOfLatlng =
+        LatLng(finalPos?.latitude ?? 0.0, finalPos?.longitude ?? 0.0);
+
+  showDialog(context: context, builder: (context)=>const ProgressDialog(message: "Please wait...",));
+
+  var details = await AssistantMethods.obtainPlaceDirectionDetails(pickUpLatLng, dropOfLatlng);
+
+  Navigator.of(context).pop();
+
+  print("details?.distanceText");
+  print(details?.distanceText);
+
+
   }
 }
